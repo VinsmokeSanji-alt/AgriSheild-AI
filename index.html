@@ -10,23 +10,24 @@
   <div class="page">
     <header class="hero">
       <div>
-        <p class="badge">AI in Agriculture</p>
-        <h1 id="appTitle">AgriShield AI</h1>
-        <p class="subtitle" id="appSubtitle">
-          Farm-level crop risk prediction, priority alerts, and actionable intervention suggestions.
+        <p class="tag">AI in Agriculture</p>
+        <h1>AgriShield AI</h1>
+        <p class="subtitle">
+          Predict farm-level crop risk, prioritize interventions, and suggest safer crop choices.
         </p>
       </div>
     </header>
 
     <main class="dashboard">
-      <!-- Input Card -->
       <section class="card input-card">
-        <h2 id="inputTitle">Farm Input</h2>
-        <p class="muted" id="inputDesc">Enter field conditions to predict crop survival risks.</p>
+        <h2>Farm Input</h2>
+        <p class="card-desc">
+          Enter farm conditions to predict crop risk and get smart recommendations.
+        </p>
 
         <div class="form-grid">
-          <div class="field">
-            <label id="labelLanguage" for="language">Language</label>
+          <div class="form-group">
+            <label for="language">Language</label>
             <select id="language">
               <option value="en">English</option>
               <option value="hi">Hindi</option>
@@ -34,75 +35,116 @@
             </select>
           </div>
 
-          <div class="field">
-            <label id="labelFarmer" for="farmerName">Farmer Name</label>
-            <input type="text" id="farmerName" placeholder="Enter farmer name" />
-          </div>
-
-          <div class="field">
-            <label id="labelLocation" for="location">Location</label>
-            <input type="text" id="location" placeholder="Enter village / area" />
-          </div>
-
-          <div class="field">
-            <label id="labelSoil" for="soilType">Soil Type</label>
+          <div class="form-group">
+            <label for="soil">Soil Type</label>
             <select id="soil">
-              <option value="loamy">Loamy</option>
-              <option value="clayey">Clayey</option>
-              <option value="sandy">Sandy</option>
-              <option value="black">Black</option>
-              <option value="red">Red</option>
+              <option value="Loamy">Loamy</option>
+              <option value="Clay">Clay</option>
+              <option value="Sandy">Sandy</option>
+              <option value="Black">Black</option>
+              <option value="Red">Red</option>
             </select>
           </div>
 
-          <div class="field">
-            <label id="labelTemp" for="temperature">Temperature (°C)</label>
-            <input type="number" id="temperature" placeholder="e.g. 28" />
+          <div class="form-group">
+            <label for="temperature">Temperature (°C)</label>
+            <input type="number" id="temperature" placeholder="e.g. 26" />
           </div>
 
-          <div class="field">
-            <label id="labelRain" for="rainfall">Rainfall (mm/month)</label>
-            <input type="number" id="rainfall" placeholder="e.g. 120" />
-          </div>
+          <div class="form-group">
+  <label for="location">Location</label>
+  <input type="text" id="location" placeholder="Enter your area (e.g. Shivamogga)" />
+</div>
 
-          <div class="field">
-            <label id="labelWater" for="waterAvailability">Water Availability</label>
-            <select id="waterAvailability">
-              <option value="low">Low</option>
-              <option value="medium">Medium</option>
-              <option value="high">High</option>
+<div class="form-group">
+  <label for="rainfall">Rainfall Level</label>
+  <select id="rainfall">
+    <option value="Low">Low Rain</option>
+    <option value="Medium">Medium Rain</option>
+    <option value="High">High Rain</option>
+  </select>
+</div>
+
+          <div class="form-group">
+            <label for="water">Water Availability</label>
+            <select id="water">
+              <option value="Low">Low</option>
+              <option value="Medium">Medium</option>
+              <option value="High">High</option>
             </select>
           </div>
 
-          <div class="field">
-            <label id="labelCrop" for="currentCrop">Current / Intended Crop</label>
-            <select id="currentCrop">
-              <option value="rice">Rice</option>
-              <option value="wheat">Wheat</option>
-              <option value="maize">Maize</option>
-              <option value="cotton">Cotton</option>
-              <option value="millet">Millet</option>
-              <option value="groundnut">Groundnut</option>
+          <div class="form-group">
+            <label for="crop">Target Crop</label>
+            <select id="crop">
+              <option value="Rice">Rice</option>
+              <option value="Wheat">Wheat</option>
+              <option value="Maize">Maize</option>
+              <option value="Millet">Millet</option>
+              <option value="Cotton">Cotton</option>
+              <option value="Groundnut">Groundnut</option>
             </select>
           </div>
         </div>
 
-        <button id="analyzeBtn" class="primary-btn">Analyze Risk</button>
+        <button id="analyzeBtn" class="btn-primary">Analyze Farm Risk</button>
       </section>
 
-      <!-- Output Card -->
       <section class="card output-card">
         <div class="output-header">
           <div>
-            <h2 id="outputTitle">Prediction Results</h2>
-            <p class="muted" id="outputDesc">AI-powered crop survival analysis and intervention priority.</p>
+            <h2>Prediction Result</h2>
+            <p class="card-desc">
+              AI-based crop risk assessment with explainable suggestions.
+            </p>
           </div>
         </div>
 
-        <div id="resultArea" class="result-placeholder">
-          <div class="placeholder-box">
-            <h3 id="placeholderTitle">No analysis yet</h3>
-            <p id="placeholderText">Fill the farm details and click “Analyze Risk” to view recommendations, risks, explanations, and actions.</p>
+        <div id="emptyState" class="empty-state">
+          Enter farm inputs and click <strong>Analyze Farm Risk</strong>.
+        </div>
+
+        <div id="resultArea" class="hidden">
+          <div class="result-grid">
+            <div class="mini-card">
+              <h3>Recommended Crop</h3>
+              <p id="bestCrop" class="big-value">-</p>
+            </div>
+
+            <div class="mini-card">
+              <h3>Target Crop Risk</h3>
+              <p id="riskBadge" class="risk-badge">-</p>
+            </div>
+
+            <div class="mini-card">
+              <h3>Suitability Score</h3>
+              <p id="scoreValue" class="big-value">-</p>
+            </div>
+          </div>
+
+          <div class="section-block">
+            <h3>Explainable AI Reason</h3>
+            <p id="explanationText"></p>
+          </div>
+
+          <div class="section-block">
+            <h3>Priority Alert</h3>
+            <p id="priorityText"></p>
+          </div>
+
+          <div class="section-block">
+            <h3>Actionable Suggestions</h3>
+            <ul id="suggestionList"></ul>
+          </div>
+
+          <div class="section-block">
+            <h3>Safer Alternative Crop</h3>
+            <p id="alternativeCrop"></p>
+          </div>
+
+          <div class="section-block">
+            <h3>All Crop Comparison</h3>
+            <div id="cropCards" class="crop-cards"></div>
           </div>
         </div>
       </section>
